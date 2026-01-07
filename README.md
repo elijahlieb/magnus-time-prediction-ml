@@ -21,7 +21,7 @@ magnus-time-prediction/
 │
 ├── data/
 │   ├── README.md          # Instructions to obtain raw data
-│   └── sample/            # Small example dataset (5 blitz games)
+│   └── raw/            # Here is the folder where the data must be 
 │
 ├── src/
 │   ├── data_loading/      # PGN parsing and dataset construction
@@ -47,96 +47,84 @@ GitHub does not track empty folders. All scripts automatically create the requir
 
 ## Data 
 
-The dataset is built from publicly available chess games played by Magnus Carlsen on chess.com, provided in PGN (Portable Game Notation) format. Each row of the dataset corresponds to one move played by Magnus Carlsen. Only blitz games are considered. 
+Due to size constraints, the datasets used in this project are not included directly in the GitHub repository.
+They are publicly available on Zenodo.
 
-Features include temporal variables, game dynamics, positional complexity indicators, and time control information
+### Zenodo archive
 
-Due to size constraints, raw PGN files and large generated datasets are not included in this repository.
+The Zenodo repository contains two compressed archives:
 
-Instructions for obtaining the data are provided in:
+1. **Raw game data**
+   - `magnus_carlsen_blitz_pgns.zip`  
+   This archive contains 250 PGN files corresponding to blitz games played by Magnus Carlsen on chess.com.
 
-```kotlin
-data/README.md
-```
+2. **Processed datasets**
+   - `magnus_time_prediction_dataset.zip`  
+   This archive contains the following CSV files, intended to be placed in `results/metrics/`:
 
-## Installation
+   - `data_magnus_moves.csv`  
+     The full move-level dataset used for training and evaluating the models.
 
-### 1. Clone the repository
+   - `data_sample_magnus.csv`  
+     A fixed small sample dataset used for rapid experimentation and visualization, avoiding repeated random sampling.
+
+   - `data_shuffled_magnus.csv`  
+     A shuffled version of the full dataset to ensure reproducibility across training runs.
+
+The datasets can be downloaded from Zenodo at:
+
+**(https://doi.org/10.5281/zenodo.18175686)**
+
+
+## Reproducibility
+
+To reproduce the experiments:
+
+1. Clone this repository.
 
 ```bash
 git clone https://github.com/elijahlieb/magnus-time-prediction-ml.git
 cd magnus-time-prediction-ml
 ```
 
-### 2. Create a virtual environment (recommended)
+2. Download both ZIP archives from Zenodo.
 
-```bash
-python -m venv venv
-source venv/bin/activate      # Linux / macOS
-venv\Scripts\activate         # Windows
-```
+3. Extract:
+   - the PGN files if you wish to rebuild the dataset from scratch,
+   - the CSV files into `results/metrics/` if you want to directly train and evaluate the models.
 
-### 3. Install dependencies
+4. Install dependencies:
 
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
 
-## Usage 
-
-### 1. Data processing 
-
-```python
-from src.data_loading.file_loader import df_final
-from src.utils.io import save_dataframe_as_csv
-from src.utils.config import DATA_DIR, RESULTS_DIR
-
-df = df_final(DATA_DIR / "raw")
-save_dataframe_as_csv(df, RESULTS_DIR / "metrics", "df_MagnusMoves.csv")
-```
-
-All required output directories (results/metrics, results/figures, etc.) are created automatically if they do not exist.
-
-### 2. Model Training 
-
-Models implemented in this project include: Linear Regression (baseline), Random Forest and Multilayer Perceptron (Neural Network). 
-
-Example (Random Forest):
-
-```python
-from src.models.random_forest import train_random_forest
-model = train_random_forest(X_train, y_train)
-```
-
-### 3. Visualization
-
-```bash
-from src.utils.plot import plot_target_variable
-plot_target_variable(df, "TimeSpend", "Time spent", "seconds")
-```
-
-Figures are saved automatically in results/figures.
+5. Run the notebooks in order.
 
 
-## Reproducibility
+## Models 
 
-This repository follows reproducible research practices:
+The project evaluates several model families:
 
-- Clear separation between raw data, code, and results
-- Automatic creation of output directories
-- Fixed random seeds where applicable
-- Example datasets provided for demonstration
+- Linear models (Linear Regression, Ridge, Lasso),
+- A Random Forest regressor,
+- A multilayer perceptron (neural network).
 
-Large models and datasets are intentionally excluded from GitHub and must be generated locally.
+Models are evaluated using standard regression metrics, with a focus on the coefficient of determination (R²).
 
-## Relation to Existing Work
 
-This project is inspired by recent efforts to model human behavior in chess, notably the Maia project (McIlroy-Young et al., 2021). While Maia focuses on move selection, this work addresses the complementary problem of modeling human thinking time, a key component of realistic human-AI alignment.
+## Purpose and Outlook
+
+This project is an exploratory study demonstrating that human thinking time in chess can be predicted in a non-trivial way from game context.
+Beyond modeling a single player, it opens the door to more general approaches that incorporate player skill level and playing style, potentially enriching human-like chess bots and educational tools.
+
 
 ## License 
-MIT License 
 
-## Author 
+The code in this repository is provided for academic and educational purposes.
+The datasets are released under the license specified in the corresponding Zenodo record.
+
+
+## Author
 
 Elijah Liebskind
 Student in bachelor 3 of CPES DAC from PSL 
