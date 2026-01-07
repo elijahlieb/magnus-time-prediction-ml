@@ -37,8 +37,7 @@ magnus-time-prediction/
 ├── results/
 │   ├── figures/           # Generated plots and board visualizations
 │   ├── metrics/           # Model evaluation results
-│   ├── models/            # Saved models (excluded from GitHub if large)
-│   └── logs/              # Execution and training logs
+│   └── models/            # Saved models (excluded from GitHub if large)
 ```
 
 ### Important note:
