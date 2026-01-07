@@ -1,0 +1,32 @@
+import os
+from pathlib import Path
+import chess
+import chess.svg
+
+# Function to download boards by using FEN 
+def download_boards(df_samp_pred, output_dir: Path):
+    """
+    Create chessboard SVG images from FEN strings and save them to output_dir.
+    """
+
+    # Create directory if it does not exist
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Remove old images
+    for file in output_dir.glob("*.svg"):
+        file.unlink()
+
+    print("Old board images successfully deleted")
+
+    # Generate new boards
+    for _, row in df_samp_pred.iterrows():
+        board = chess.Board(row["FEN"])
+        svg = chess.svg.board(board)
+
+        filename = f"game_{row['ID_game']}_move_{row['ID_move']}.svg"
+        file_path = output_dir / filename
+
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.write(svg)
+
+    print("New board images successfully generated")

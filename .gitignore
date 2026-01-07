@@ -1,0 +1,13 @@
+# Data
+data/raw/
+data/full/
+
+# Results
+results/metrics/
+results/models/
+results/logs/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

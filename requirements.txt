@@ -1,0 +1,25 @@
+# Core
+numpy
+pandas
+scipy
+
+# Chess parsing
+python-chess
+
+# Machine Learning
+scikit-learn
+joblib
+
+# Neural Networks
+tensorflow
+
+# Visualization
+matplotlib
+seaborn
+
+# Notebooks
+jupyter
+ipykernel
+
+# Utilities
+tqdm
