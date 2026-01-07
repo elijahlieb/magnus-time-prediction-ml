@@ -13,6 +13,7 @@ The long-term goal is to contribute to more human-aligned chess AI systems, by i
 
 ## Repository Structure
 
+```graphql
 magnus-time-prediction/
 │
 ├── README.md
@@ -38,7 +39,7 @@ magnus-time-prediction/
 │   ├── metrics/           # Model evaluation results
 │   ├── models/            # Saved models (excluded from GitHub if large)
 │   └── logs/              # Execution and training logs
-
+```
 
 ### Important note:
 
@@ -55,37 +56,45 @@ Due to size constraints, raw PGN files and large generated datasets are not incl
 
 Instructions for obtaining the data are provided in:
 
+```kotlin
 data/README.md
-
+```
 
 ## Installation
 
 ### 1. Clone the repository
 
+```bash
 git clone https://github.com/elijahlieb/magnus-time-prediction-ml.git
 cd magnus-time-prediction-ml
+```
 
 ### 2. Create a virtual environment (recommended)
 
+```bash
 python -m venv venv
 source venv/bin/activate      # Linux / macOS
 venv\Scripts\activate         # Windows
+```
 
 ### 3. Install dependencies
 
+```bash
 pip install -r requirements.txt
-
+```
 
 ## Usage 
 
 ### 1. Data processing 
 
+```python
 from src.data_loading.file_loader import df_final
 from src.utils.io import save_dataframe_as_csv
 from src.utils.config import DATA_DIR, RESULTS_DIR
 
 df = df_final(DATA_DIR / "raw")
 save_dataframe_as_csv(df, RESULTS_DIR / "metrics", "df_MagnusMoves.csv")
+```
 
 All required output directories (results/metrics, results/figures, etc.) are created automatically if they do not exist.
 
@@ -95,13 +104,17 @@ Models implemented in this project include: Linear Regression (baseline), Random
 
 Example (Random Forest):
 
+```python
 from src.models.random_forest import train_random_forest
 model = train_random_forest(X_train, y_train)
+```
 
 ### 3. Visualization
 
+```bash
 from src.utils.plot import plot_target_variable
 plot_target_variable(df, "TimeSpend", "Time spent", "seconds")
+```
 
 Figures are saved automatically in results/figures.
 
@@ -120,6 +133,9 @@ Large models and datasets are intentionally excluded from GitHub and must be gen
 ## Relation to Existing Work
 
 This project is inspired by recent efforts to model human behavior in chess, notably the Maia project (McIlroy-Young et al., 2021). While Maia focuses on move selection, this work addresses the complementary problem of modeling human thinking time, a key component of realistic human-AI alignment.
+
+## License 
+MIT License 
 
 ## Author 
 
