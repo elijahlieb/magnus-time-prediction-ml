@@ -112,6 +112,10 @@ The project evaluates several model families:
 Models are evaluated using standard regression metrics, with a focus on the coefficient of determination (R²).
 
 
+## Report 
+
+The full research report associated with this project is available on Zenodo: https://doi.org/10.5281/zenodo.18176553 
+
 ## Purpose and Outlook
 
 This project is an exploratory study demonstrating that human thinking time in chess can be predicted in a non-trivial way from game context.
