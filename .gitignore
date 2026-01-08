@@ -1,13 +1,21 @@
 # Data
 data/raw/
-data/full/
-
-# Results
+data/raw/*
 results/metrics/
 results/models/
-results/logs/
+
+# Models
+*.pkl
+*.h5
+*.joblib
 
 # Python
 __pycache__/
 *.pyc
+
+# Notebooks
 .ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
