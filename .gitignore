@@ -1,8 +1,12 @@
 # Data
 data/raw/
 data/raw/*
-results/metrics/
-results/models/
+# Ignore all generated results
+results/**
+
+# But keep directory structure
+!results/**/
+!results/**/README.md
 
 # Models
 *.pkl
