@@ -39,6 +39,7 @@ def download_model(model, results_dir: Path, filename: str = "model.pkl"):
 
     print(f"✅ Model saved to {model_path}")
 
+
 # Load the model to test if it works
 def load_model(path, model_name):
     model = joblib.load(path / model_name)

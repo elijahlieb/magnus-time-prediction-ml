@@ -215,7 +215,7 @@ def df_pgn_full(pgn, ID_Game_Start: int = 0):
                     "FEN": FEN_before,
                     "FEN_after": FEN_after,
 
-                    "OpponentTimeSpend": OpponentTimeSpend,
+                    "OpponentTimeSpent": OpponentTimeSpend,
                     "TimeSpent": TimeSpent,
                     "time_spent_before": time_spent_before,
 
