@@ -40,10 +40,6 @@ magnus-time-prediction/
 │   └── models/            # Saved models (excluded from GitHub if large)
 ```
 
-### Important note:
-
-GitHub does not track empty folders. All scripts automatically create the required subfolders in results/ if they do not exist, ensuring the project runs correctly after cloning.
-
 
 ## Data 
 
@@ -56,7 +52,7 @@ The Zenodo repository contains two compressed archives:
 
 1. **Raw game data**
    - `magnus_carlsen_blitz_pgns.zip`  
-   This archive contains 250 PGN files corresponding to blitz games played by Magnus Carlsen on chess.com.
+   This archive contains 250 PGN files corresponding to blitz games played by Magnus Carlsen on chess.com. 
 
 2. **Processed datasets**
    - `magnus_time_prediction_dataset.zip`  
@@ -69,7 +65,7 @@ The Zenodo repository contains two compressed archives:
      A fixed small sample dataset used for rapid experimentation and visualization, avoiding repeated random sampling.
 
    - `data_shuffled_magnus.csv`  
-     A shuffled version of the full dataset to ensure reproducibility across training runs.
+     A shuffled version of the full dataset to ensure reproducibility across training runs. 
 
 The datasets can be downloaded from Zenodo at:
 
@@ -86,12 +82,13 @@ To reproduce the experiments:
 git clone https://github.com/elijahlieb/magnus-time-prediction-ml.git
 cd magnus-time-prediction-ml
 ```
+Or download the zip file of the code in GitHub. 
 
 2. Download both ZIP archives from Zenodo.
 
 3. Extract:
-   - the PGN files if you wish to rebuild the dataset from scratch,
-   - the CSV files into `results/metrics/` if you want to directly train and evaluate the models.
+   - the PGN files into data/raw/ if you wish to rebuild the dataset from scratch 
+   - the CSV files into `results/metrics/` if you want to directly train and evaluate the models. 
 
 4. Install dependencies:
 
@@ -99,6 +96,71 @@ cd magnus-time-prediction-ml
    pip install -r requirements.txt
 
 5. Run the notebooks in order.
+
+
+
+
+## Reproducibility
+
+This section describes how to fully reproduce the experiments presented in the report.
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/elijahlieb/magnus-time-prediction-ml.git
+cd magnus-time-prediction-ml
+```
+
+
+### 2. Download the data from Zenodo
+
+Download the two ZIP archives from the associated Zenodo record:
+- magnus_carlsen_blitz_pgns.zip
+- magnus_time_prediction_dataset.zip
+
+Extract:
+- the PGN files into data/raw/ if you wish to rebuild the dataset from scratch
+- the CSV files into results/metrics/ if you want to directly train and evaluate the models
+
+### 3. Create and activate a virtual environment
+
+We strongly recommend using a virtual environment to ensure dependency isolation.
+
+On Windows
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+On macOS / Linux
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 4. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Open the project in VS Code
+
+```bash
+code .
+```
+
+Make sure that the Python extension is installed and the selected Python interpreter corresponds to the virtual environment (venv)
+
+### 6. Run the notebooks
+
+Open and run the notebooks in the following order:
+
+- notebooks/01_data_processing.ipynb
+- notebooks/02_model_training.ipynb
+- notebooks/03_website_sample.ipynb
+
+Each notebook is self-contained and assumes that the data folders follow the structure described above.
 
 
 ## Models 
