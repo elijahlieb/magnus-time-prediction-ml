@@ -87,10 +87,10 @@ Or download the zip file of the code in GitHub.
 2. Download both ZIP archives from Zenodo.
 
 3. Extract:
-   - the PGN files into data/raw/ if you wish to rebuild the dataset from scratch 
+   - the PGN files into `data/raw/` if you wish to rebuild the dataset from scratch 
    - the CSV files into `results/metrics/` if you want to directly train and evaluate the models. 
 
-4. Install dependencies:
+4. Install dependencies: 
 
    ```bash
    pip install -r requirements.txt
