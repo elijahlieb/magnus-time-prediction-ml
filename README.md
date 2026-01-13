@@ -73,7 +73,7 @@ The Zenodo repository contains two compressed archives:
 
 The datasets can be downloaded from Zenodo at:
 
-**(https://doi.org/10.5281/zenodo.18175686)**
+**(https://zenodo.org/records/18230736)**
 
 
 ## Reproducibility

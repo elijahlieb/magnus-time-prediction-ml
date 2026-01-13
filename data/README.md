@@ -1,9 +1,10 @@
 # Data instructions
 
-This project relies on chess games played by Magnus Carlsen, provided in PGN
+This project relies on chess games played by Magnus Carlsen, provided in PGN 
 (Portable Game Notation) format. Due to file size constraints and licensing
 considerations, raw PGN files and large generated datasets are not included
-directly in this repository.
+directly in this repository. But you can download it in this repository : 
+https://zenodo.org/records/18230736 
 
 This document explains how to obtain the data and organize it locally in order
 to reproduce the experiments.
