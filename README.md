@@ -114,7 +114,7 @@ Models are evaluated using standard regression metrics, with a focus on the coef
 
 ## Report 
 
-The full research report associated with this project is available on Zenodo: https://doi.org/10.5281/zenodo.18176553 
+The full research report associated with this project is available on Zenodo: https://zenodo.org/records/18230933
 
 ## Purpose and Outlook
 
